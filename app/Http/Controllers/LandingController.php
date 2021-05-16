@@ -48,9 +48,9 @@ class LandingController extends Controller
             'uploadfile' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $imageName = time().'.'.$request->file('uploadfile')->getClientOriginalExtension();
-        $request->file('uploadfile')->move(public_path('images'), $imageName);
 
+        $imageName = $request->file('uploadfile')->getClientOriginalName();
+        $request->file('uploadfile')->move(public_path('images'), $imageName);
 
         $laporan = Laporan::create([
             'user_id' => $request->user_id,

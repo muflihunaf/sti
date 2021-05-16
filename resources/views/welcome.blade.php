@@ -350,7 +350,7 @@
                                 </div>
                             </div>
                             <div class="form-group mt-3">
-                                <select name="lokasi_id" class="form-control" id="">
+                                <select name="instansi_id" class="form-control" id="">
                                     @foreach ($instansi as $item)
                                     <option value="{{ $item->id }} "> {{ $item->nama_instansi }} -
                                         {{ $item->get_lokasi->lokasi }} </option>
@@ -358,7 +358,7 @@
                                 </select>
                             </div>
                             <div class="form-group mt-3">
-                                <textarea class="form-control" name="message" rows="5" placeholder="Deskripsi Kejadian"
+                                <textarea class="form-control" name="deskripsi" rows="5" placeholder="Deskripsi Kejadian"
                                     required></textarea>
                             </div>
                             <div class="form-group mt-3">
