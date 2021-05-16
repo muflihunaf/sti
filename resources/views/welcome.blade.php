@@ -47,8 +47,16 @@
           <li><a class="nav-link scrollto" href="#contact">Pengaduan</a></li>
           <li class="dropdown"><a href="#"><span>Login/Daftar</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="login.html">Login</a></li>
-              <li><a href="daftar.html">Daftar Akun</a></li>
+                @if (Auth::user())
+                @if (auth()->user()->is_admin == 1)
+                <li><a href="{{ route('admin.home') }} ">Home </a></li>
+                @else
+                <li>{{ Auth::user()->name }} </li>
+                @endif
+                @else
+              <li><a href="{{ route('login') }} ">Login</a></li>
+              <li><a href="{{ route('register') }} ">Daftar Akun</a></li>
+              @endif
             </ul>
           </li>
         </ul>
