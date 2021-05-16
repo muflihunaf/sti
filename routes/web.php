@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoriController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LokasiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,4 +34,13 @@ Route::prefix('admin')->middleware('is_admin')->group(function () {
     Route::get('/categori/{id}/edit',[CategoriController::class, 'edit'])->name('categori.edit');
     Route::post('/categori/{id}/update',[CategoriController::class, 'update'])->name('categori.update');
     Route::get('/categori/{id}/delete',[CategoriController::class, 'destroy'])->name('categori.delete');
+
+
+    // Lokasi
+    Route::get('/lokasi',[LokasiController::class, 'index'])->name('admin.lokasi');
+    Route::get('/lokasi/create',[LokasiController::class, 'create'])->name('lokasi.create');
+    Route::post('/lokasi/store',[LokasiController::class, 'store'])->name('lokasi.store');
+    Route::get('/lokasi/{id}/edit',[LokasiController::class, 'edit'])->name('lokasi.edit');
+    Route::post('/lokasi/{id}/update',[LokasiController::class, 'update'])->name('lokasi.update');
+    Route::get('/lokasi/{id}/delete',[LokasiController::class, 'destroy'])->name('lokasi.delete');
 });
