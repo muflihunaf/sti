@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoriController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InstansiController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LokasiController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [H]);
+Route::get('/', [LandingController::class, 'index']);
+Route::post('/pengaduan', [LandingController::class, 'store'])->name('pengaduan');
 
 Auth::routes();
 

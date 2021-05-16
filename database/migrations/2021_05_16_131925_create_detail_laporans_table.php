@@ -18,7 +18,6 @@ class CreateDetailLaporansTable extends Migration
             $table->string('laporan_id');
             $table->string('judul');
             $table->text('deskripsi');
-            $table->string('lokasi_id');
             $table->string('instansi_id');
             $table->string('kategori_id');
             $table->string('lampiran');

@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categori;
+use App\Models\DetailLaporan;
+use App\Models\Instansi;
+use App\Models\Laporan;
+use App\Models\Lokasi;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -13,7 +18,12 @@ class LandingController extends Controller
      */
     public function index()
     {
-        //
+
+        $instansi = Instansi::all();
+        $lokasi = Lokasi::all();
+        $kategori = Categori::all();
+
+        return view('welcome',compact('instansi','lokasi','kategori'));
     }
 
     /**
@@ -34,7 +44,30 @@ class LandingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'uploadfile' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $imageName = time().'.'.$request->file('uploadfile')->getClientOriginalExtension();
+        $request->file('uploadfile')->move(public_path('images'), $imageName);
+
+
+        $laporan = Laporan::create([
+            'user_id' => $request->user_id,
+            'tipe_laporan' => $request->tipe,
+            'tanggal' => $request->tanggal,
+        ]);
+        $detail = DetailLaporan::create([
+            'laporan_id' => $laporan->id,
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'instansi_id' => $request->instansi_id,
+            'kategori_id' => $request->kategori_id,
+            'lampiran' => $imageName,
+            'status' => 'Menunggu'
+        ]);
+
+        return redirect('/');
     }
 
     /**
