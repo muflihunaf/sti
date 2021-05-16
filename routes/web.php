@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoriController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InstansiController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LokasiController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,14 @@ Route::prefix('admin')->middleware('is_admin')->group(function () {
 
     // Instansi
     Route::get('/instansi',[InstansiController::class, 'index'])->name('admin.instansi');
+    Route::get('/instansi/create',[InstansiController::class, 'create'])->name('instansi.create');
+    Route::post('/instansi/store',[InstansiController::class, 'store'])->name('instansi.store');
+    Route::get('/instansi/{id}/edit',[InstansiController::class, 'edit'])->name('instansi.edit');
+    Route::post('/instansi/{id}/update',[InstansiController::class, 'update'])->name('instansi.update');
+    Route::get('/instansi/{id}/delete',[InstansiController::class, 'destroy'])->name('instansi.delete');
+
+    // Instansi
+    Route::get('/laporan',[LaporanController::class, 'index'])->name('admin.laporan');
     Route::get('/instansi/create',[InstansiController::class, 'create'])->name('instansi.create');
     Route::post('/instansi/store',[InstansiController::class, 'store'])->name('instansi.store');
     Route::get('/instansi/{id}/edit',[InstansiController::class, 'edit'])->name('instansi.edit');

@@ -17,8 +17,12 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Judul</th>
+                            <th>Deskripsi</th>
+                            <th>Tanggal</th>
                             <th>Nama Instansi</th>
                             <th>Lokasi</th>
+
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -30,8 +34,11 @@
                         @foreach ($data as $item)
                         <tr>
                             <td>{{ $no++ }} </td>
-                            <td> {{ $item->nama_instansi }} </td>
-                            <td> {{ $item->get_lokasi->lokasi }} </td>
+                            <td> {{ $item->get_detail->judul }} </td>
+                            <td> {{ $item->get_detail->deskripsi }} </td>
+                            <td> {{ $item->tanggal }} </td>
+                            <td> {{ $item->get_detail->get_instansi->nama_instansi }} </td>
+                            <td> {{ $item->get_detail->get_instansi->get_lokasi->lokasi }} </td>
                             <td><a href="{{route('lokasi.edit', $item->id)}} "
                                     class="fa fa-edit btn btn-primary"></a> <a
                                     href=" {{route('lokasi.delete', $item->id)}} "
