@@ -5,9 +5,12 @@
 @section('content_header')
     <h1>Dashboard</h1>
 @stop
+@section('right-sidebar')
+hal
 
+@endsection
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <p>Selamat Datang Admin.</p>
 @stop
 
 @section('css')
