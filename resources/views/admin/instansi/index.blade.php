@@ -10,14 +10,15 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <a href="{{ route('lokasi.create') }} " class="btn btn-primary">Tambah Data</a>
+                <a href="{{ route('instansi.create') }} " class="btn btn-primary">Tambah Data</a>
             </div>
             <div class="card-body">
                 <table id="example" class="table table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
+                            <th>Nama Instansi</th>
+                            <th>Lokasi</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -29,7 +30,8 @@
                         @foreach ($data as $item)
                         <tr>
                             <td>{{ $no++ }} </td>
-                            <td> {{ $item->lokasi }} </td>
+                            <td> {{ $item->nama_instansi }} </td>
+                            <td> {{ $item->get_lokasi->lokasi }} </td>
                             <td><a href="{{route('lokasi.edit', $item->id)}} "
                                     class="fa fa-edit btn btn-primary"></a> <a
                                     href=" {{route('lokasi.delete', $item->id)}} "

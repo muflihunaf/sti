@@ -177,6 +177,7 @@
               <i class="bx bxs-battery-charging" style="color: #e361ff;"></i>
               <h3><a href="">PLN</a></h3>
             </div>
+
           </div>
 
       </div>
