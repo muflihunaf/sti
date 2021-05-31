@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LandingController::class, 'index']);
+Route::get('/', [LandingController::class, 'index'])->name('welcome');
 Route::post('/pengaduan', [LandingController::class, 'store'])->name('pengaduan');
 
 Auth::routes();

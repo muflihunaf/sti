@@ -53,7 +53,17 @@
                             @if (auth()->user()->is_admin == 1)
                             <li><a href="{{ route('admin.home') }} ">Home </a></li>
                             @else
-                            <li>{{ Auth::user()->name }} </li>
+                            <li class="dropdown-item">{{ Auth::user()->name }} </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+
+                            </form> </li>
                             @endif
                             @else
                             <li><a href="{{ route('login') }} ">Login</a></li>
