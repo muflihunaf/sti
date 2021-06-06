@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoriController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InstansiController;
+use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LokasiController;
@@ -54,7 +55,15 @@ Route::prefix('admin')->middleware('is_admin')->group(function () {
     Route::post('/instansi/{id}/update',[InstansiController::class, 'update'])->name('instansi.update');
     Route::get('/instansi/{id}/delete',[InstansiController::class, 'destroy'])->name('instansi.delete');
 
-    // Instansi
+        // Kontak
+    Route::get('/kontak',[KontakController::class, 'index'])->name('admin.kontak');
+    Route::get('/kontak/create',[KontakController::class, 'create'])->name('kontak.create');
+    Route::post('/kontak/store',[KontakController::class, 'store'])->name('kontak.store');
+    Route::get('/kontak/{id}/edit',[KontakController::class, 'edit'])->name('kontak.edit');
+    Route::post('/kontak/{id}/update',[KontakController::class, 'update'])->name('kontak.update');
+    Route::get('/instansi/{id}/delete',[KontakController::class, 'destroy'])->name('kontak.delete');
+
+    // Laporan
     Route::get('/laporan',[LaporanController::class, 'index'])->name('admin.laporan');
     Route::get('/laporan/{id}/show',[LaporanController::class, 'show'])->name('laporan.edit');
 });

@@ -241,6 +241,11 @@ return [
             'icon' => 'fas fa-fw fa-building',
         ],
         [
+            'text' => 'Kontak',
+            'url'  => 'admin/kontak',
+            'icon' => 'fas fa-fw fa-id-card',
+        ],
+        [
             'text' => 'Laporan',
             'url'  => 'admin/laporan',
             'icon' => 'fas fa-fw fa-book',

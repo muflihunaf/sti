@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categori;
-use App\Models\DetailLaporan;
-use App\Models\Instansi;
 use App\Models\Kontak;
-use App\Models\Laporan;
-use App\Models\Lokasi;
 use Illuminate\Http\Request;
 
-class LandingController extends Controller
+class KontakController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,14 +14,9 @@ class LandingController extends Controller
      */
     public function index()
     {
+        $data = Kontak::all();
 
-        $instansi = Instansi::all();
-        $lokasi = Lokasi::all();
-        $kategori = Categori::all();
-        $laporan = Laporan::all();
-        $kontak = Kontak::all();
-
-        return view('welcome',compact('instansi','lokasi','kategori','laporan','kontak'));
+        return view('admin.kontak.index',compact('data'));
     }
 
     /**
@@ -36,7 +26,7 @@ class LandingController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.kontak.create');
     }
 
     /**
@@ -47,30 +37,10 @@ class LandingController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'uploadfile' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-
-        $imageName = $request->file('uploadfile')->getClientOriginalName();
-        $request->file('uploadfile')->move(public_path('images'), $imageName);
-
-        $laporan = Laporan::create([
-            'user_id' => $request->user_id,
-            'tipe_laporan' => $request->tipe,
-            'tanggal' => $request->tanggal,
-        ]);
-        $detail = DetailLaporan::create([
-            'laporan_id' => $laporan->id,
-            'judul' => $request->judul,
-            'deskripsi' => $request->deskripsi,
-            'instansi_id' => $request->instansi_id,
-            'kategori_id' => $request->kategori_id,
-            'lampiran' => $imageName,
-            'status' => 'Menunggu'
-        ]);
-
-        return redirect('/');
+        if (Kontak::create($request->all())) {
+            return redirect()->route('admin.kontak');
+        }
+        return redirect()->back();
     }
 
     /**
