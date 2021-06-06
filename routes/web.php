@@ -56,9 +56,5 @@ Route::prefix('admin')->middleware('is_admin')->group(function () {
 
     // Instansi
     Route::get('/laporan',[LaporanController::class, 'index'])->name('admin.laporan');
-    Route::get('/instansi/create',[InstansiController::class, 'create'])->name('instansi.create');
-    Route::post('/instansi/store',[InstansiController::class, 'store'])->name('instansi.store');
-    Route::get('/instansi/{id}/edit',[InstansiController::class, 'edit'])->name('instansi.edit');
-    Route::post('/instansi/{id}/update',[InstansiController::class, 'update'])->name('instansi.update');
-    Route::get('/instansi/{id}/delete',[InstansiController::class, 'destroy'])->name('instansi.delete');
+    Route::get('/laporan/{id}/show',[LaporanController::class, 'show'])->name('laporan.edit');
 });

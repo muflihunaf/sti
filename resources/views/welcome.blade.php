@@ -127,7 +127,7 @@
                 <div class="row">
                     <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch"
                         data-aos="fade-right">
-                        <img src="assets/img/details-2.PNG" class="pict mb-4"></img>
+                        <img src="assets/img/details-2.png" class="pict mb-4"></img>
                     </div>
 
                     <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5"
@@ -176,28 +176,8 @@
                 <div class="row" data-aos="fade-left">
                     <div class="col-lg-3 col-md-4">
                         <div class="icon-box" data-aos="zoom-in" data-aos-delay="50">
-                            <i class="bx bxs-ambulance" style="color: #ffbb2c;"></i>
                             <h3><a href="">Ambulans</a></h3>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-                        <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
-                            <i class="bx bx-taxi" style="color: #5578ff;"></i>
-                            <h3><a href="">Polisi</a></h3>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-                        <div class="icon-box" data-aos="zoom-in" data-aos-delay="150">
-                            <i class="bx bxs-car-mechanic" style="color: #e80368;"></i>
-                            <h3><a href="">Bengkel</a></h3>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
-                        <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
-                            <i class="bx bxs-battery-charging" style="color: #e361ff;"></i>
-                            <h3><a href="">PLN</a></h3>
-                        </div>
-
                     </div>
 
                 </div>
@@ -212,7 +192,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="count-box">
                             <i class="bx bx-message-detail"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="3"
+                            <span data-purecounter-start="0" data-purecounter-end="{{ count($laporan) }} " data-purecounter-duration="3"
                                 class="purecounter"></span>
                             <p>Pengaduan</p>
                         </div>
@@ -260,16 +240,17 @@
                 </div>
 
                 <div class="row no-gutters" data-aos="fade-left">
-
+                    @foreach ($laporan as $item)
                     <div class="col-lg-3 col-md-4">
                         <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
-                            <a href="assets/img/gallery/gallery-1.jpg" class="gallery-lightbox">
-                                <img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
+                            <a href="{{ asset('images/'. $item->get_detail->lampiran) }} " class="gallery-lightbox">
+                                <img src="{{ asset('images/'.$item->get_detail->lampiran) }} " alt="{{ $item->get_detail->lampiran }} " class="img-fluid">
                             </a>
                         </div>
                     </div>
+                    @endforeach
 
-                    <div class="col-lg-3 col-md-4">
+                    {{-- <div class="col-lg-3 col-md-4">
                         <div class="gallery-item" data-aos="zoom-in" data-aos-delay="150">
                             <a href="assets/img/gallery/gallery-2.jpg" class="gallery-lightbox">
                                 <img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
@@ -323,7 +304,7 @@
                                 <img src="assets/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
                             </a>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
 
@@ -438,7 +419,7 @@
             <div class="row">
 
                 <div class="col-lg-4 col-md-6 footer-links">
-                    <img src="assets/img/footer.PNG">
+                    <img src="assets/img/footer.png">
                 </div>
 
                 <div class="col-lg-8 col-md-6 footer-links">

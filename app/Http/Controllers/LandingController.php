@@ -22,8 +22,9 @@ class LandingController extends Controller
         $instansi = Instansi::all();
         $lokasi = Lokasi::all();
         $kategori = Categori::all();
+        $laporan = Laporan::all();
 
-        return view('welcome',compact('instansi','lokasi','kategori'));
+        return view('welcome',compact('instansi','lokasi','kategori','laporan'));
     }
 
     /**
